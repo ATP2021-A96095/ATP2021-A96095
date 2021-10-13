@@ -1,0 +1,68 @@
+import random
+fosforos=21
+print("Existem 21 fósforos. Podes tirar entre 1-4 de cada vez. Quem ficar com o último fósforo perde")
+a=0
+#O computador em segundo lugar ganha sempre:
+
+j=int(input("Queres jogar em primeiro lugar (1) ou em segundo lugar (2)? "))
+if(j==1):
+  while(fosforos>1):
+    t=int(input("Escolhe entre 1-4 fósforos: "))
+    if (t>4 or t<1):
+      print("Erro. Volta a escolher um número válido")
+    fosforos=fosforos-t
+    print("Número de fósforos restantes: ",fosforos)
+    computador= 5-t
+    fosforos= fosforos-computador
+    print("O computador retirou",computador,"fósforos")
+    print("Número de fósforos restantes: ",fosforos)
+  if(fosforos==1):
+    print("Perdeste o jogo")
+
+#O jogador em segundo lugar
+else:
+  if(j==2):
+    
+    computador=random.randint(1,4)
+    print("O computador retirou",computador,"fósforos")
+    fosforos=fosforos-computador
+    print("Número de fósforos restantes: ",fosforos)
+    t=int(input("Escolhe entre 1-4 fósforos: "))
+    if(t>4 or t<1):
+      print("Erro.Volta a escolher um nº válido.")
+    fosforos=fosforos-t
+    print("Número de fósforos restantes: ",fosforos) 
+    while(t==5-computador and fosforos>1):
+        computador=random.randint(1,4)
+        print("O computador retirou",computador,"fósforos")
+        fosforos=fosforos-computador
+        print("Número de fósforos restantes: ",fosforos)
+        t=int(input("Escolhe entre 1-4 fósforos: "))
+        if(t>4 or t<1):
+          print("Erro.Volta a escolher um nº válido.")
+        fosforos=fosforos-t
+        print("Número de fósforos restantes: ",fosforos) 
+    if(t!=5-computador):
+        s=computador+t
+        if(s>5):
+            computador=10-s
+        else:
+            computador=5-s
+        fosforos= fosforos - computador
+        print("O computador retirou",computador,"fósforos")
+        print("Número de fósforos restantes: ",fosforos)
+        while(fosforos>1):
+          t=int(input("Escolhe entre 1-4 fósforos: "))
+          if(t>4 or t<1):
+           print("Erro.Volta a escolher um nº válido.")
+          fosforos=fosforos-t
+          print("Número de fósforos restantes: ",fosforos)
+          computador= 5-t
+          fosforos= fosforos-computador
+          print("O computador retirou",computador,"fósforos")
+          print("Número de fósforos restantes: ",fosforos)
+        a=1
+    if(a==1):
+       print("Perdeste o jogo")
+    else:
+       print("Ganhaste o jogo")
